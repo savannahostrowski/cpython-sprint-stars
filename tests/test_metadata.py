@@ -22,9 +22,13 @@ def metadata(tmp_path, extra="", *, name="Example team"):
     return load_metadata(path)
 
 
-def test_example_metadata_is_a_standalone_team_configuration():
-    config = load_metadata(main.ROOT / "metadata.example.toml")
+def test_minimal_metadata_supplies_defaults_without_a_roster(tmp_path):
+    path = tmp_path / "metadata.toml"
+    path.write_text('name = "Our team leaderboard"\norganizations = ["your-org"]\n'
+                    'contributors = ["alice", "bob"]\n')
+    config = load_metadata(path)
     assert config.name == "Our team leaderboard"
+    assert config.brand == "Sprint Stars"
     assert config.organizations == ("your-org",)
     assert config.repositories == ()
     assert config.refresh_seconds == 1200

@@ -78,7 +78,7 @@ def load_metadata(path):
                                "aliases", "refresh_minutes", "timezone", "roster"}
         if unknown:
             raise ValueError(f"Unknown metadata fields: {', '.join(sorted(unknown))}")
-        name, brand = data.get("name"), data.get("brand", "Core Stars")
+        name, brand = data.get("name"), data.get("brand", "Sprint Stars")
         if not all(isinstance(value, str) and value.strip() for value in (name, brand)):
             raise ValueError("name and brand must be non-empty strings.")
         organizations, repositories = data.get("organizations", []), data.get("repositories", [])

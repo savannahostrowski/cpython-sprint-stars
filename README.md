@@ -1,62 +1,27 @@
 # Core Stars
 
-The CPython core team leaderboard, built from the [Sprint Stars template](https://github.com/savannahostrowski/sprint-stars).
+The CPython core team leaderboard, built from [Sprint Stars](https://github.com/savannahostrowski/sprint-stars).
 
-This repo holds the CPython configuration in `metadata.toml`. For your own team, start from the template rather than this repo.
+`metadata.toml` contains this board’s repositories, roster, account aliases, and branding. For another team, start from the Sprint Stars template.
 
-## Getting started
+## Run locally
 
-Clone this repo to run the CPython board. You'll need Python 3.12+ and [uv](https://docs.astral.sh/uv/getting-started/installation/).
-
-`metadata.toml` already selects the Python organization and its contributor roster. You can change those settings for a different scope:
-
-```toml
-name = "Our team leaderboard"
-organizations = ["our-org"]
-repositories = ["another-org/shared-project"]
-contributors = ["alice", "bob"]
-refresh_minutes = 20
-```
-
-Use `organizations = []` to track only specific repos. An org includes all its public repos, including forks and archives. Overlapping repo lists count once.
-
-Then start the app:
+You'll need Python 3.15+ and a GitHub personal access token with public repository read access.
 
 ```sh
+export GITHUB_TOKEN="your-token"
 uv sync
 uv run python dev.py
 ```
 
-Open [localhost:8774](http://127.0.0.1:8774/). The dev server uses your GitHub CLI login, or `GITHUB_TOKEN` if you've set it. For larger orgs, you'll want authentication to avoid GitHub's unauthenticated rate limits.
+Open [localhost:8774](http://127.0.0.1:8774/). Restart after changing metadata.
 
-The [setup guide](SETUP.md) covers authentication and deployment. [metadata.example.toml](metadata.example.toml) shows display names, account aliases, timezones, and an optional CSV roster. Restart the app after changing metadata.
+## Deploy
 
-## What counts
-
-The board defaults to the current Monday–Sunday week. You can select any inclusive date range up to 93 days.
-
-- **Closures:** issues and PRs closed during the range, credited to the person who closed them. Merged PRs count; reopened items don't.
-- **PRs:** PRs opened during the range, credited to the author.
-- **Reviews:** one point per person per PR reviewed during the range. Repeated reviews of the same PR count once. Reviews of your own PRs don't count.
-- **All:** the sum of those three.
-
-Reviewing and merging a PR count as separate actions. Backport PRs count too. Comments, commits, and branch pushes don't. Human closures and reviews of bot-created PRs count, but bots don't appear on the board.
-
-Only configured participants earn points. The participant list applies to historical ranges too.
-
-## Refreshing data
-
-The server fetches from GitHub every 20 minutes by default, and open pages update automatically. Viewers share a cache within each server process. During GitHub outages or failed fetches, the app keeps the previous results and marks them stale.
-
-The cache is in memory. Keep at least one worker running for background refreshes; multiple workers or replicas each maintain their own cache.
-
-## Development
-
-FastAPI backend, plain HTML/CSS/JavaScript frontend. No database or frontend build step.
+From this repository’s root, with the existing FastAPI Cloud app linked:
 
 ```sh
-uv run python -m pytest
-node --test tests/test_frontend.mjs
+uv run fastapi deploy
 ```
 
-For FastAPI Cloud, the entrypoint is `main:app` and the health endpoint is `/health`. See the [deployment instructions](SETUP.md#3-deploy-your-own-app-optional) before deploying your copy.
+The deployed app needs its own `GITHUB_TOKEN` secret. See the [FastAPI Cloud docs](https://fastapicloud.com/docs/fastapi-cloud-cli/deploy/).
