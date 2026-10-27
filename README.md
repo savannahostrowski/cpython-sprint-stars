@@ -1,6 +1,6 @@
 # Core Stars
 
-The CPython core team leaderboard, built from the [Core Stars template](https://github.com/savannahostrowski/core-stars).
+The CPython core team leaderboard, built from the [Sprint Stars template](https://github.com/savannahostrowski/sprint-stars).
 
 This repo holds the CPython configuration in `metadata.toml`. For your own team, start from the template rather than this repo.
 
