@@ -1,16 +1,14 @@
 # Core Stars
 
-A leaderboard for issues closed, PRs opened, and code reviews across GitHub repositories. Configure it with your team and public repos.
+The CPython core team leaderboard, built from the [Core Stars template](https://github.com/savannahostrowski/core-stars).
+
+This repo holds the CPython configuration in `metadata.toml`. For your own team, start from the template rather than this repo.
 
 ## Getting started
 
-Create a repo with **Use this template**, then clone it. You'll need Python 3.12+ and [uv](https://docs.astral.sh/uv/getting-started/installation/).
+Clone this repo to run the CPython board. You'll need Python 3.12+ and [uv](https://docs.astral.sh/uv/getting-started/installation/).
 
-```sh
-cp metadata.example.toml metadata.toml
-```
-
-Edit `metadata.toml` with your organizations, repositories, and participants:
+`metadata.toml` already selects the Python organization and its contributor roster. You can change those settings for a different scope:
 
 ```toml
 name = "Our team leaderboard"

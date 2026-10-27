@@ -1,36 +1,59 @@
-# Copy to metadata.toml, replace the example values, then restart/redeploy.
-name = "Our team leaderboard"
+# Edit this file to configure your own leaderboard. Restart/redeploy after changes.
+name = "CPython core team leaderboard"
 brand = "Core Stars"
+organizations = ["python"]
+repositories = []
+refresh_minutes = 20
+timezone = "America/Los_Angeles"
 
-# Every public repo in these orgs, plus any individually selected repos.
-# For repo-only tracking, leave organizations = []. Overlaps count once.
-organizations = ["your-org"]
-repositories = [] # e.g. ["another-org/shared-project"]
-
-# GitHub usernames, not email addresses. Only these people earn points.
-# Strings and tables can be mixed; tables optionally set display names.
+# Additional contributors, combined with the live roster below. Plain usernames also work.
 contributors = [
-  "alice",
-  { login = "bob", name = "Bob Example" },
+  { login = "swtaarrs", name = "Brett Simmers", roles = ["triager"] },
+  { login = "mhsmith", name = "Malcolm Smith", roles = ["triager"] },
+  { login = "fried", name = "Jason Fried", roles = ["triager"] },
+  { login = "akulakov", name = "andrei kulakov", roles = ["triager"] },
+  { login = "graingert", name = "Thomas Grainger", roles = ["triager"] },
+  { login = "webknjaz", name = "Sviatoslav Sydorenko", roles = ["triager"] },
+  { login = "aisk", name = "An Long", roles = ["triager"] },
+  { login = "cmaloney", name = "Cody Maloney", roles = ["triager"] },
+  { login = "eryksun", name = "Eryk Sun", roles = ["triager"] },
+  { login = "sirosen", name = "Stephen Rosen", roles = ["triager"] },
+  { login = "skirpichev", name = "Sergey B Kirpichev", roles = ["triager"] },
+  { login = "ryan-duve", name = "ryan-duve", roles = ["triager"] },
+  { login = "zanieb", name = "Zanie Blue", roles = ["triager"] },
+  { login = "jdemeyer", name = "Jeroen Demeyer", roles = ["triager"] },
+  { login = "arhadthedev", name = "Oleg Iarygin", roles = ["triager"] },
+  { login = "brittanyrey", name = "Brittany Reynoso", roles = ["triager"] },
+  { login = "efimov-mikhail", name = "Mikhail Efimov", roles = ["triager"] },
+  { login = "Mariatta", name = "Mariatta", roles = ["triager"] },
+  { login = "lazorchakp", name = "Peter Lazorchak", roles = ["triager"] },
+  { login = "CuriousLearner", name = "Sanyam Khurana", roles = ["triager"] },
+  { login = "hoodmane", name = "Hood Chatham", roles = ["triager"] },
+  { login = "shihai1991", name = "Hai Shi", roles = ["triager"] },
+  { login = "m-aciek", name = "Maciej Olko", roles = ["triager"] },
+  { login = "parulgupta1004", name = "Parul Gupta", roles = ["triager"] },
+  { login = "DavidCEllis", name = "David Ellis", roles = ["triager"] },
+  { login = "furkanonder", name = "Furkan Onder", roles = ["triager"] },
+  { login = "brianschubert", name = "Brian Schubert", roles = ["triager"] },
+  { login = "MojoVampire", name = "Josh Rosenberg", roles = ["triager"] },
+  { login = "uriyyo", name = "Yurii Karabas", roles = ["triager"] },
+  { login = "cocolato", name = "Hai Zhu", roles = ["triager"] },
+  { login = "jablonskidev", name = "jablonskidev", roles = ["triager"] },
+  { login = "JacobCoffee", name = "Jacob Coffee", roles = ["triager"] },
+  { login = "slateny", name = "Stanley", roles = ["triager"] },
+  { login = "sunmy2019", name = "sunmy2019", roles = ["triager"] },
+  { login = "johnslavik", name = "Bartosz Sławecki", roles = ["triager"] },
+  { login = "NekoAsakura", name = "Neko Asakura", roles = ["triager"] },
+  { login = "devdanzin", name = "devdanzin", roles = ["triager"] },
+  { login = "ivonastojanovic", name = "ivonastojanovic", roles = ["triager"] },
 ]
 
-refresh_minutes = 20
-# IANA timezone for the server's default week; the browser uses its local zone.
-timezone = "UTC"
-
-# Optional: combine a person's alternate account with their listed identity.
-# Do not also list the alternate account in contributors.
 [aliases]
-# alice-work = "alice"
+jelle-openai = "JelleZijlstra"
 
-# Optional: supplement contributors with a live CSV roster.
-# Omit this section to use only the explicit list above.
-# CSV columns: name, GitHub login, joined date, departed date.
-# Rows without a login or with a departure date are omitted.
-# [roster]
-# url = "https://example.com/team.csv"
-# page_url = "https://example.com/team"
-# label = "Our team roster"
-# minimum_members = 1 # Source sanity check, before merging contributors.
-
-# Keep GITHUB_TOKEN in the server environment, never in this file.
+# Optional live CSV roster: name, GitHub login, joined, departed.
+[roster]
+url = "https://raw.githubusercontent.com/python/devguide/main/core-team/core-team.csv"
+page_url = "https://devguide.python.org/core-team/team-log/"
+label = "CPython core-team log"
+minimum_members = 50
