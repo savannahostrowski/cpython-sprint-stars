@@ -2,6 +2,8 @@
 
 The CPython core team leaderboard, built from [Sprint Stars](https://github.com/savannahostrowski/sprint-stars).
 
+[View the board](https://cpython-sprint-stars.fastapicloud.dev/).
+
 `metadata.toml` contains this board’s repositories, roster, account aliases, and branding. For another team, start from the Sprint Stars template.
 
 ## Run locally
